@@ -5,8 +5,8 @@ import { authenticate } from "../plugins/authenticate"
 
 export async function gameRoutes(fastify: FastifyInstance) {
   fastify.get('/pools/:id/games', {
-    onRequest: [authenticate],
-  }, async (request) => {
+    onRequest: [authenticate]
+  },async (request) => {
     const getPoolParams = z.object({
       id: z.string(),
     })
@@ -29,7 +29,7 @@ export async function gameRoutes(fastify: FastifyInstance) {
       }
     })
 
-    return { 
+    return {
       games: games.map(game => {
         return {
           ...game,
